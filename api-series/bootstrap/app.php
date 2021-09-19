@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\Authenticator;
+
 require_once __DIR__.'/../vendor/autoload.php';
 
 (new Laravel\Lumen\Bootstrap\LoadEnvironmentVariables(
@@ -78,6 +80,10 @@ $app->configure('app');
 
 $app->routeMiddleware([
     'autenticacao' => App\Http\Middleware\Authenticate::class,
+]);
+
+$app->routeMiddleware([
+    'authenticator' => Authenticator::class
 ]);
 
 /*
